@@ -1,14 +1,18 @@
-import { component$, useStore } from '@builder.io/qwik'
-import { useAuthSignin } from '~/routes/plugin@auth'
+import { component$, useSignal, useStore, useVisibleTask$ } from '@builder.io/qwik'
 import '../auth.css'
 
 export default component$(() => {
+    const csrfToken = useSignal<string>();
     const store = useStore({
         email: '',
         password: '',
     })
 
-    const signIn = useAuthSignin()
+    useVisibleTask$(async () => {
+        csrfToken.value = await fetch('/api/auth/csrf').then(
+            async (res) => (await res.json()).csrfToken
+        );
+    });
 
     return (
         <div class='page'>
@@ -24,26 +28,20 @@ export default component$(() => {
                         </div>
                     </div>
                 </div>
-                <div class='form'>
+                <form method="post" action="/api/auth/callback/credentials" class='form'>
+                    <input type="hidden" value={csrfToken.value} name="csrfToken" />
                     <div class='inputWrapperFull'>
-                        <input class='input' placeholder='Email' type='email' value={store.email} onInput$={(ev) => (store.email = (ev.target as HTMLInputElement).value)} />
+                        <input class='input' placeholder='Email' type='text' name='username' value={store.email} onInput$={(ev) => (store.email = (ev.target as HTMLInputElement).value)} />
                     </div>
                     <div class='inputWrapperFull'>
-                        <input class='input' placeholder='Password' type='password' value={store.password} onInput$={(ev) => (store.password = (ev.target as HTMLInputElement).value)} />
+                        <input class='input' placeholder='Password' type='password' name='password' value={store.password} onInput$={(ev) => (store.password = (ev.target as HTMLInputElement).value)} />
                     </div>
                     <button
                         class='submitButton'
-                        disabled={signIn.isRunning}
                     >
-                        {signIn.isRunning ?
-                            <span class='loading'>
-                                <span />
-                                <span />
-                                <span />
-                            </span>
-                            : 'Log in'}
+                        Log In
                     </button>
-                </div>
+                </form>
             </div>
         </div>
     )
