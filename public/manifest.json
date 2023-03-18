@@ -1,0 +1,9 @@
+{
+    "$schema": "https://json.schemastore.org/web-manifest-combined.json",
+    "name": "Qwik-Auth Test",
+    "short_name": "Qwik-Auth Test",
+    "start_url": ".",
+    "display": "standalone",
+    "background_color": "#fff",
+    "description": ""
+}

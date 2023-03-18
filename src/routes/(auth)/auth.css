@@ -1,0 +1,193 @@
+.formWrapper {
+    width: max-content;
+    margin: 0 auto;
+    max-height: 100%;
+    padding: 50px 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    overflow: auto;
+}
+
+.titles {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 25px;
+}
+
+.title {
+    font-size: 30px;
+    font-weight: 500;
+}
+
+.subtitle {
+    display: flex;
+    width: max-content;
+    font-size: 16px;
+    font-weight: 400;
+}
+
+.link {
+    margin-left: 3px;
+    border-bottom: 2px solid #FFFFFF;
+    transition: .2s;
+    cursor: pointer;
+}
+
+.link:hover {
+    color: var(--brandingColor);
+    border-bottom: 2px solid var(--brandingColor);
+    transition: .2s;
+}
+
+.form {
+    width: 280px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.usernameForm {
+    width: 280px;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.inputsWrapper {
+    width: 100%;
+    height: 45px;
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.inputWrapperFull {
+    width: 100%;
+    height: 45px;
+    padding: 10px;
+    border-radius: 15px;
+    background-color: var(--darkBlue);
+    margin-bottom: 20px;
+    box-shadow: 0px 7px 4px 1px var(--boxShadow);
+}
+
+.usernameForm .inputWrapperFull {
+    width: calc(100% - 80px);
+    margin: 0;
+    display: flex;
+    align-items: center;
+}
+
+.inputWrapperHalf {
+    width: calc(50% - 5px);
+    height: 100%;
+    padding: 10px;
+    border-radius: 15px;
+    background-color: var(--darkBlue);
+    margin-bottom: 20px;
+    box-shadow: 0px 7px 4px 1px var(--boxShadow);
+}
+
+.at {
+    font-size: 17px;
+}
+
+.input {
+    background-color: var(--darkBlue);
+    width: 100%;
+    height: 100%;
+    outline: none;
+    border: none;
+    font-family: 'Raleway', sans-serif;
+    color: #FFFFFF;
+    font-size: 17px;
+}
+
+.input:-webkit-autofill {
+    -webkit-box-shadow: 0 0 0px 1000px var(--darkBlue) inset;
+    -webkit-text-fill-color: #FFFFFF;
+}
+
+.submitButton {
+    background-color: var(--darkBlue);
+    width: max-content;
+    padding: 15px 20px;
+    border: none;
+    border-radius: 15px;
+    display: flex;
+    align-items: center;
+    font-size: 17px;
+    cursor: pointer;
+    box-shadow: 0px 7px 4px 1px var(--boxShadow);
+    transition: .2s;
+    color: #FFFFFF;
+}
+
+.usernameForm .submitButton {
+    width: auto;
+    font-size: 20px;
+    padding: 0 20px;
+    height: 45px;
+}
+
+.submitButton:hover {
+    color: var(--brandingColor);
+    box-shadow: 0px 10px 4px 2px var(--boxShadow);
+    transition: .2s;
+}
+
+.submitButton:disabled {
+    border: none;
+    color: var(--gray);
+    cursor: no-drop
+}
+
+.submitButton:disabled:hover {
+    box-shadow: 0px 7px 4px 1px var(--boxShadow);
+}
+
+.loading {
+    display: inline-flex;
+    align-items: center;
+}
+
+.loading .spacer {
+    margin-right: 2px;
+}
+
+.loading span {
+    animation-name: blink;
+    animation-duration: 1.4s;
+    animation-iteration-count: infinite;
+    animation-fill-mode: both;
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    display: inline-block;
+    margin: 0 1px;
+    background-color: var(--gray);
+}
+
+.loading span:nth-of-type(2) {
+    animation-delay: 0.2s;
+}
+
+.loading span:nth-of-type(3) {
+    animation-delay: 0.4s;
+}
+
+@keyframes blink {
+    0% {
+        opacity: 0.2;
+    }
+
+    20% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 0.2;
+    }
+}
